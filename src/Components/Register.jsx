@@ -65,7 +65,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-amber-300 to-amber-700 text-white">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-600 via-amber-300 to-amber-600 text-white">
       <div className="w-full max-w-md p-8 bg-amber-950 backdrop-blur-md rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center">Foodistic</h1>
         <p className="mt-2 text-center text-gray-400">Join us and explore the world of foods!</p>

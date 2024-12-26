@@ -9,10 +9,14 @@ import {
 import Root from './Components/Root';
 import Error from './Components/Error';
 import Home from './Components/Home';
-import Footer from './Components/Footer';
 import AuthProvider from './Components/Authprovider';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import FoodDetails from './Components/FoodDetails';
+import MyFoodRequests from './Components/MyFoodRequests';
+import AddFood from './Components/AddFood';
+import ManageMyFoods from './Components/ManageMyFoods';
+import AvailableFoods from './Components/AvailableFoods';
 
 
 const router = createBrowserRouter([
@@ -31,7 +35,32 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
-      }
+      },
+      {
+        path: "food/:id",
+        element: <FoodDetails></FoodDetails>
+      },
+      {
+        path: "my-food-requests",
+        element: <MyFoodRequests></MyFoodRequests>
+      },
+      {
+        path: "add-foods",
+        element: <AddFood></AddFood>
+      },
+      {
+        path: "add-foods",
+        element: <AddFood></AddFood>
+      },
+      {
+        path: "manage-foods",
+        element: <ManageMyFoods></ManageMyFoods>
+      },
+      {
+        path: "available-foods",
+        element: <AvailableFoods></AvailableFoods>
+      },
+
 
     ]
   },
