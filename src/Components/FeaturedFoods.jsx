@@ -24,7 +24,7 @@ const FeaturedFoods = () => {
         {featuredFoods.map((food) => (
           <div
             key={food._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            className="bg-amber-50 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <img
               src={food.foodImage}
@@ -32,7 +32,7 @@ const FeaturedFoods = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-bold text-gray-800">{food.foodName}</h3>
+              <h3 className="text-xl font-bold text-gray-800">{food.foodName}</h3><br />
               <p className="text-gray-600 text-sm">
                 <strong>Quantity:</strong> {food.foodQuantity}
               </p>

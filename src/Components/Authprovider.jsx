@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
+import axios from "axios";
 
 // Context to provide user state and auth functions
 export const AuthContext = createContext(null);
@@ -45,20 +46,28 @@ const AuthProvider = ({ children }) => {
 
   // Function to sign in a user
   const signInUser = async (email, password) => {
-    setLoading(true);
+    setLoading(true); // Start loading state
+  
     try {
+      // Sign in with email and password
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       setUser(user); // Update the user state after successful sign-in
-      return user;
+  
+      // Create JWT token by sending user email to backend
+      const response = await axios.post('http://localhost:5000/jwt', { email: email }, { withCredentials: true });
+      console.log('JWT token:', response.data);
+  
+      return user; // Return user object after successful sign-in
     } catch (error) {
       console.error("Error signing in:", error);
-      setError(error.message); // Set error message to be displayed
-      throw error;
+      setError(error.message); // Update error state for display
+      throw error; // Re-throw error for further handling if needed
     } finally {
-      setLoading(false); // Set loading to false when done
+      setLoading(false); // Stop loading state
     }
   };
+  
 
   // Function to sign out the user
   const signOutUser = async () => {

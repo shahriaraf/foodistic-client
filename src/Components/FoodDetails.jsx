@@ -26,7 +26,7 @@ const FoodDetails = () => {
       const response = await axios.post(`http://localhost:5000/request-food/${id}`, {
         additionalNotes,
         userEmail,
-      });
+      }, {withCredentials: true});
       alert('Food requested successfully!');
     } catch (error) {
       console.error('Error requesting food:', error);

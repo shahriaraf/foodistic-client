@@ -7,8 +7,9 @@ const ManageMyFoods = () => {
   useEffect(() => {
     const fetchMyFoods = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/manage-my-foods');
-        setFoods(response.data);
+        const response = await axios.get('http://localhost:5000/manage-my-foods', {withCredentials: true});
+        console.log(response.data); // Log the fetched data
+        setFoods(response.data); // Update the state with fetched data
       } catch (error) {
         console.error('Error fetching foods:', error);
       }
@@ -21,7 +22,7 @@ const ManageMyFoods = () => {
     const confirmDelete = window.confirm('Are you sure you want to delete this food?');
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:5000/delete-food/${id}`);
+        await axios.delete(`http://localhost:5000/delete-food/${id}`, {withCredentials: true});
         alert('Food deleted successfully');
         setFoods(foods.filter((food) => food._id !== id));
       } catch (error) {

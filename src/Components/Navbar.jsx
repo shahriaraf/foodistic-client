@@ -9,7 +9,6 @@ const Navbar = () => {
 
     const handleSignOut = async () => {
         await signOutUser(); // Call signOutUser to log the user out
-        setIsDrawerOpen(false); // Close the drawer after logging out
     };
 
     return (

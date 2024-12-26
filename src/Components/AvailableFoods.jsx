@@ -36,15 +36,15 @@ const AvailableFoods = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {foods.map((food) => (
-          <div key={food._id} className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out">
+          <div key={food._id} className="bg-amber-50 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out">
             <img src={food.foodImage} alt={food.foodName} className="w-full h-48 object-cover rounded-t-lg mb-4" />
-            <h3 className="text-xl font-semibold text-gray-800">{food.foodName}</h3>
-            <p className="text-gray-600 text-sm">{food.pickupLocation}</p>
+            <h3 className="text-xl font-semibold text-gray-800">{food.foodName}</h3><br />
+            <p className="text-gray-600 text-lg">{food.pickupLocation}</p>
             <p className="text-gray-500 text-sm">Expires on: {new Date(food.expiredDate).toLocaleString()}</p>
 
             <div className="mt-4 text-center">
               <Link to={`/food/${food._id}`}>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">
+                <button className="bg-amber-500 text-black py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">
                   View Details
                 </button>
               </Link>
