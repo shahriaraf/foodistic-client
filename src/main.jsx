@@ -2,7 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import {
-
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
@@ -17,7 +16,11 @@ import MyFoodRequests from './Components/MyFoodRequests';
 import AddFood from './Components/AddFood';
 import ManageMyFoods from './Components/ManageMyFoods';
 import AvailableFoods from './Components/AvailableFoods';
+import PrivateRoute from './Components/PrivateRoute';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// Create the QueryClient instance
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -42,26 +45,20 @@ const router = createBrowserRouter([
       },
       {
         path: "my-food-requests",
-        element: <MyFoodRequests></MyFoodRequests>
+        element: <PrivateRoute><MyFoodRequests></MyFoodRequests></PrivateRoute>
       },
       {
         path: "add-foods",
-        element: <AddFood></AddFood>
-      },
-      {
-        path: "add-foods",
-        element: <AddFood></AddFood>
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
       },
       {
         path: "manage-foods",
-        element: <ManageMyFoods></ManageMyFoods>
+        element: <PrivateRoute><ManageMyFoods></ManageMyFoods></PrivateRoute>
       },
       {
         path: "available-foods",
         element: <AvailableFoods></AvailableFoods>
       },
-
-
     ]
   },
   {
@@ -72,8 +69,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    {/* Pass the queryClient instance to the QueryClientProvider */}
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
   </StrictMode>,
 );

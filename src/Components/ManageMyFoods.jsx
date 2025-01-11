@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ManageMyFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -7,7 +8,7 @@ const ManageMyFoods = () => {
   useEffect(() => {
     const fetchMyFoods = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/manage-my-foods', {withCredentials: true});
+        const response = await axios.get('http://localhost:5000/manage-my-foods', { withCredentials: true });
         console.log(response.data); // Log the fetched data
         setFoods(response.data); // Update the state with fetched data
       } catch (error) {
@@ -19,21 +20,30 @@ const ManageMyFoods = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this food?');
-    if (confirmDelete) {
-      try {
-        await axios.delete(`http://localhost:5000/delete-food/${id}`, {withCredentials: true});
-        alert('Food deleted successfully');
-        setFoods(foods.filter((food) => food._id !== id));
-      } catch (error) {
-        console.error('Error deleting food:', error);
-        alert('Failed to delete food');
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won’t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(`http://localhost:5000/delete-food/${id}`, { withCredentials: true });
+          Swal.fire('Deleted!', 'Your food has been deleted.', 'success');
+          setFoods(foods.filter((food) => food._id !== id));
+        } catch (error) {
+          console.error('Error deleting food:', error);
+          Swal.fire('Failed!', 'Failed to delete the food. Please try again.', 'error');
+        }
       }
-    }
+    });
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 pt-24">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Manage My Foods</h1>
 
       <div className="overflow-x-auto">

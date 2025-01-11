@@ -1,41 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { AuthContext } from './Authprovider';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+
+// Fetch food details function
+const fetchFoodDetails = async (id) => {
+  const response = await axios.get(`http://localhost:5000/food/${id}`, { withCredentials: true });
+  return response.data;
+};
+
+// Request food function (mutation)
+const requestFood = async ({ id, additionalNotes, userEmail }) => {
+  const response = await axios.post(`http://localhost:5000/request-food/${id}`, {
+    additionalNotes,
+    userEmail,
+  }, { withCredentials: true });
+  return response.data;
+};
 
 const FoodDetails = () => {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
-  const [food, setFood] = useState(null);
   const [additionalNotes, setAdditionalNotes] = useState('');
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchFoodDetails = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/food/${id}`);
-        setFood(response.data);
-      } catch (error) {
-        console.error('Error fetching food details:', error);
-      }
-    };
+  // Using Tanstack Query for fetching food details
+  const { data: food, isLoading, isError } = useQuery({
+    queryKey: ['foodDetails', id],
+    queryFn: () => fetchFoodDetails(id),
+    enabled: !!id, // Ensures the query doesn't run until id is available
+  });
 
-    fetchFoodDetails();
-  }, [id]);
+  // Using Tanstack Mutation for requesting food
+  const { mutate: requestFoodMutation, isLoading: isRequestLoading } = useMutation({
+    mutationFn: (requestData) => requestFood(requestData),
+    onSuccess: () => {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Your food request was submitted successfully.',
+        icon: 'success',
+        confirmButtonText: 'Okay',
+      }).then(() => {
+        navigate('/available-foods'); // Navigate after the user confirms the SweetAlert
+      });
+      
+    },
+    onError: () => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to submit your food request. Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'Okay',
+      });
+    },
+  });
 
-  const handleRequest = async () => {
-    try {
-      const userEmail = 'user@example.com'; // Replace with logged-in user's email
-      const response = await axios.post(`http://localhost:5000/request-food/${id}`, {
-        additionalNotes,
-        userEmail,
-      }, {withCredentials: true});
-      alert('Food requested successfully!');
-    } catch (error) {
-      console.error('Error requesting food:', error);
-      alert('Failed to request food');
+  const handleRequest = () => {
+    if (!user) {
+      Swal.fire({
+        title: 'Not Logged In',
+        text: 'You must be logged in to request food.',
+        icon: 'warning',
+        confirmButtonText: 'Login',
+      });
+      return;
     }
+
+    const userEmail = user.email; // Assuming 'user' contains the logged-in user's email
+    requestFoodMutation({ id, additionalNotes, userEmail });
   };
 
-  if (!food) {
+  if (isLoading) {
     return <div className="text-center text-xl">Loading...</div>;
+  }
+
+  if (isError) {
+    return <div className="text-center text-xl text-red-500">Error fetching food details</div>;
   }
 
   return (
@@ -74,9 +116,10 @@ const FoodDetails = () => {
         <div className="flex justify-center">
           <button
             onClick={handleRequest}
-            className="bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none transition duration-200"
+            className="bg-amber-500 text-black py-2 px-6 rounded-lg shadow-md hover:bg-amber-700 hover:text-white focus:outline-none transition duration-200"
+            disabled={isRequestLoading}
           >
-            Request
+            {isRequestLoading ? 'Requesting...' : 'Request'}
           </button>
         </div>
       </div>

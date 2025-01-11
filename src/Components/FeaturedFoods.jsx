@@ -7,7 +7,7 @@ const FeaturedFoods = () => {
   useEffect(() => {
     const fetchFeaturedFoods = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/featured-foods');
+        const response = await axios.get('http://localhost:5000/featured-foods', {withCredentials: true});
         setFeaturedFoods(response.data);
       } catch (error) {
         console.error('Error fetching featured foods:', error);

@@ -31,7 +31,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden shadow-lg">
+    <div className="relative w-full pt-16 mx-auto overflow-hidden shadow-lg">
       {/* Slider */}
       <div
         className="flex transition-transform duration-700"

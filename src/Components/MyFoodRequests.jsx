@@ -18,7 +18,7 @@ const MyFoodRequests = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 pt-24">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">My Food Requests</h1>
 
       <div className="overflow-x-auto">
@@ -36,8 +36,8 @@ const MyFoodRequests = () => {
               <tr key={request._id} className="border-t hover:bg-gray-50">
                 <td className="px-4 py-2 text-sm text-gray-800">{request.foodName}</td>
                 <td className="px-4 py-2 text-sm text-gray-600">{request.pickupLocation}</td>
-                <td className="px-4 py-2 text-sm text-gray-500">{new Date(request.expireDate).toLocaleString()}</td>
-                <td className="px-4 py-2 text-sm text-gray-500">{new Date(request.requestDate).toLocaleString()}</td>
+                <td className="px-4 py-2 text-sm text-gray-500">{new Date(request.expiredDate).toLocaleString()}</td>
+                <td className="px-4 py-2 text-sm text-gray-500">{new Date(request.requestedAt).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
