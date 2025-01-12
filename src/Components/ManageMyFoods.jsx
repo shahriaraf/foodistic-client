@@ -8,7 +8,7 @@ const ManageMyFoods = () => {
   useEffect(() => {
     const fetchMyFoods = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/manage-my-foods', { withCredentials: true });
+        const response = await axios.get('https://foodistic-3494a.web.app/manage-my-foods', { withCredentials: true });
         console.log(response.data); // Log the fetched data
         setFoods(response.data); // Update the state with fetched data
       } catch (error) {
@@ -31,7 +31,7 @@ const ManageMyFoods = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:5000/delete-food/${id}`, { withCredentials: true });
+          await axios.delete(`https://foodistic-3494a.web.app/delete-food/${id}`, { withCredentials: true });
           Swal.fire('Deleted!', 'Your food has been deleted.', 'success');
           setFoods(foods.filter((food) => food._id !== id));
         } catch (error) {

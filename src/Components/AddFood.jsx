@@ -24,7 +24,7 @@ const AddFood = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/add-food', formData);
+      const response = await axios.post('https://foodistic-3494a.web.app/add-food', formData);
       alert('Food added successfully!');
       // Optionally, clear the form after submission or redirect to another page
       setFormData({

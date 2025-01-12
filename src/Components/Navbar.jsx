@@ -91,7 +91,7 @@ const Navbar = () => {
                             <div className="relative group">
                                 <img
                                     className="w-12 h-12 rounded-full"
-                                    src={user.photoURL || "https://i.ibb.co.com/MSrWHxv/man-user-icon-vector-260nw-301106849.webp"}
+                                    src={user.photoURL}
                                     alt={user.displayName}
                                  
                                 />

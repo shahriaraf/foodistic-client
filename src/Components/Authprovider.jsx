@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
       setUser(user); // Update the user state after successful sign-in
   
       // Create JWT token by sending user email to backend
-      const response = await axios.post('http://localhost:5000/jwt', { email: email }, { withCredentials: true });
+      const response = await axios.post('https://foodistic-3494a.web.app/jwt', { email: email }, { withCredentials: true });
       console.log('JWT token:', response.data);
   
       return user; // Return user object after successful sign-in
@@ -108,6 +108,7 @@ const AuthProvider = ({ children }) => {
 
     return () => unsubscribe(); // Cleanup the listener on component unmount
   }, []);
+  console.log(user)
 
   // Context value to expose user state and auth functions
   const userInfo = {

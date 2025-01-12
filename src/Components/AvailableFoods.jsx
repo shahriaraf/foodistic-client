@@ -14,14 +14,9 @@ const AvailableFoods = () => {
     const fetchFoods = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/available-foods?sortBy=${sortBy}`,
-          {
-            withCredentials: true, // Ensure cookies are sent with the request
-            headers: {
-              Authorization: `Bearer ${user?.token}`, // Assuming the token is in the user object
-            },
-          }
+          `https://foodistic-3494a.web.app/available-foods-public?sortBy=${sortBy}`
         );
+
         setFoods(response.data);
         setFilteredFoods(response.data); // Initialize filteredFoods with fetched data
       } catch (error) {
@@ -29,6 +24,7 @@ const AvailableFoods = () => {
         // Handle the 401 Unauthorized error (if needed, redirect to login or show alert)
         if (error.response && error.response.status === 401) {
           console.log('Unauthorized access - please login.');
+          console.log(user)
           // Optionally redirect to login page
         }
       }
