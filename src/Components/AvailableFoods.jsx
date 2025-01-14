@@ -9,12 +9,13 @@ const AvailableFoods = () => {
   const [filteredFoods, setFilteredFoods] = useState([]);
   const [sortBy, setSortBy] = useState('expiredDate'); // Default sorting by expired date
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
+  const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // State to toggle layout
 
   useEffect(() => {
     const fetchFoods = async () => {
       try {
         const response = await axios.get(
-          `https://foodistic-3494a.web.app/available-foods-public?sortBy=${sortBy}`
+          `https://assignment-11-server-jet-one.vercel.app/available-foods-public?sortBy=${sortBy}`
         );
 
         setFoods(response.data);
@@ -24,7 +25,7 @@ const AvailableFoods = () => {
         // Handle the 401 Unauthorized error (if needed, redirect to login or show alert)
         if (error.response && error.response.status === 401) {
           console.log('Unauthorized access - please login.');
-          console.log(user)
+          console.log(user);
           // Optionally redirect to login page
         }
       }
@@ -44,33 +45,41 @@ const AvailableFoods = () => {
   return (
     <div className="container mx-auto mt-16 p-6">
       <h1 className="text-3xl font-bold text-center mb-10">Available Foods</h1>
-      <div className='flex justify-end'>
+      <div className="flex flex-col gap-10 md:flex-row md:justify-between md:items-center md:mb-4">
         {/* Search Bar */}
-        <div className="mb-4 flex w-full">
-          <input
-            type="text"
-            placeholder="Search by food name..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-300 rounded-lg p-2 text-lg w-1/2"
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Search by food name..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="border border-gray-300 rounded-lg p-2 text-lg w-1/2"
+        />
 
         {/* Sorting Dropdown */}
-        <div className="mb-4 flex justify-center">
-          <select
-            onChange={(e) => setSortBy(e.target.value)}
-            value={sortBy}
-            className="border border-gray-100 bg-amber-100 rounded-lg p-2 text-lg"
-          >
-            <option value="expiredDate">Sort by Expiry Date</option>
-            <option value="foodName">Sort by Food Name</option>
-          </select>
-        </div>
+        <select
+          onChange={(e) => setSortBy(e.target.value)}
+          value={sortBy}
+          className="border border-gray-100 bg-amber-100 rounded-lg p-2 text-lg mb-5 md:mb-0"
+        >
+          <option value="expiredDate">Sort by Expiry Date</option>
+          <option value="foodName">Sort by Food Name</option>
+        </select>
+
+        {/* Layout Toggle Button */}
+        <button
+          onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
+          className="hidden md:inline bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none"
+        >
+          Change Layout
+        </button>
       </div>
 
       {/* Food Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        className={`grid gap-6 ${
+          isThreeColumnLayout ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'
+        }`}
+      >
         {filteredFoods.map((food) => (
           <div
             key={food._id}
@@ -88,12 +97,12 @@ const AvailableFoods = () => {
             <div className="mt-4 text-center">
               {user ? (
                 <Link to={`/food/${food._id}`}>
-                  <button className="bg-amber-500 text-black py-2 px-4 rounded-md hover:bg-amber-700 hover:text-white  focus:outline-none">
+                  <button className="bg-amber-500 text-black py-2 px-4 rounded-md hover:bg-amber-700 hover:text-white focus:outline-none">
                     View Details
                   </button>
                 </Link>
               ) : (
-                <Link to='/login'>
+                <Link to="/login">
                   <button className="bg-amber-500 text-black py-2 px-4 rounded-md hover:bg-amber-700 hover:text-white focus:outline-none">
                     View Details
                   </button>

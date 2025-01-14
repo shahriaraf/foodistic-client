@@ -7,13 +7,13 @@ import Swal from 'sweetalert2';
 
 // Fetch food details function
 const fetchFoodDetails = async (id) => {
-  const response = await axios.get(`https://foodistic-3494a.web.app/food/${id}`, { withCredentials: true });
+  const response = await axios.get(`https://assignment-11-server-jet-one.vercel.app/food/${id}`, { withCredentials: true });
   return response.data;
 };
 
 // Request food function (mutation)
 const requestFood = async ({ id, additionalNotes, userEmail }) => {
-  const response = await axios.post(`https://foodistic-3494a.web.app/request-food/${id}`, {
+  const response = await axios.post(`https://assignment-11-server-jet-one.vercel.app/request-food/${id}`, {
     additionalNotes,
     userEmail,
   }, { withCredentials: true });

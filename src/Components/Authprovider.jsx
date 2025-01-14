@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
       setUser(user); // Update the user state after successful sign-in
   
       // Create JWT token by sending user email to backend
-      const response = await axios.post('https://foodistic-3494a.web.app/jwt', { email: email }, { withCredentials: true });
+      const response = await axios.post('https://assignment-11-server-jet-one.vercel.app/jwt', { email: email }, { withCredentials: true });
       console.log('JWT token:', response.data);
   
       return user; // Return user object after successful sign-in
@@ -102,14 +102,17 @@ const AuthProvider = ({ children }) => {
   // Firebase Auth state listener to maintain session persistence
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // Update the user state whenever the authentication state changes
-      setLoading(false); // Set loading to false when done checking auth state
+      setUser(currentUser); // Update the user state when the auth state changes
+      setLoading(false);    // Set loading to false after checking auth state
     });
-
-    return () => unsubscribe(); // Cleanup the listener on component unmount
+  
+    return () => unsubscribe(); // Cleanup the listener on unmount
   }, []);
-  console.log(user)
-
+  
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading indicator while checking auth state
+  }
+  
   // Context value to expose user state and auth functions
   const userInfo = {
     user,

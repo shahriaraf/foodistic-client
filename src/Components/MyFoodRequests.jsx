@@ -7,7 +7,7 @@ const MyFoodRequests = () => {
   useEffect(() => {
     const fetchMyRequests = async () => {
       try {
-        const response = await axios.get('https://foodistic-3494a.web.app/my-food-requests', {withCredentials: true});
+        const response = await axios.get('https://assignment-11-server-jet-one.vercel.app/my-food-requests', {withCredentials: true});
         setRequests(response.data);
       } catch (error) {
         console.error('Error fetching food requests:', error);
