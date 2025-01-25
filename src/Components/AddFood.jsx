@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from './Authprovider';
 
 const AddFood = () => {
+  const {user} = useContext(AuthContext);
   const [formData, setFormData] = useState({
     foodName: '',
     foodImage: '',
@@ -9,9 +11,11 @@ const AddFood = () => {
     pickupLocation: '',
     expiredDate: '',
     additionalNotes: '',
-    donatorName: '',
-    donatorEmail: '',
+    donatorName: user.displayName || '',
+    donatorEmail: user.email || '',
+    donatorImage: user.photoURL || '', // Optional, in case you want to store the image
   });
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +30,6 @@ const AddFood = () => {
     try {
       const response = await axios.post('https://assignment-11-server-jet-one.vercel.app/add-food', formData);
       alert('Food added successfully!');
-      // Optionally, clear the form after submission or redirect to another page
       setFormData({
         foodName: '',
         foodImage: '',
@@ -34,8 +37,9 @@ const AddFood = () => {
         pickupLocation: '',
         expiredDate: '',
         additionalNotes: '',
-        donatorName: '',
-        donatorEmail: '',
+        donatorName: user.displayName || '',
+        donatorEmail: user.email || '',
+        donatorImage: user.photoURL || '',
       });
     } catch (error) {
       console.error('Error adding food:', error);
@@ -134,9 +138,22 @@ const AddFood = () => {
             type="text"
             name="donatorName"
             id="donatorName"
-            value={formData.donatorName}
+            value={user.displayName}
             onChange={handleChange}
             placeholder="Your Name"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="donatorName" className="block text-sm font-semibold text-gray-600">Your Image</label>
+          <input
+            type="text"
+            name="donatorName"
+            id="donatorName"
+            value={user.photoURL}
+            onChange={handleChange}
+            placeholder="Your Image URL"
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -148,7 +165,7 @@ const AddFood = () => {
             type="email"
             name="donatorEmail"
             id="donatorEmail"
-            value={formData.donatorEmail}
+            value={user.email}
             onChange={handleChange}
             placeholder="Your Email"
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

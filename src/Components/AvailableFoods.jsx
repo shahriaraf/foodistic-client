@@ -88,7 +88,7 @@ const AvailableFoods = () => {
             <img
               src={food.foodImage}
               alt={food.foodName}
-              className="w-full h-48 object-cover rounded-t-lg mb-4"
+              className="w-full h-64 object-cover rounded-t-lg mb-4"
             />
             <h3 className="text-xl font-semibold text-gray-800">{food.foodName}</h3>
             <p className="text-gray-600 text-lg">{food.pickupLocation}</p>
