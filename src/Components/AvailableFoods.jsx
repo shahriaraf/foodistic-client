@@ -92,7 +92,16 @@ const AvailableFoods = () => {
             />
             <h3 className="text-xl font-semibold text-gray-800">{food.foodName}</h3>
             <p className="text-gray-600 text-lg">{food.pickupLocation}</p>
-            <p className="text-gray-500 text-sm">Expires on: {new Date(food.expiredDate).toLocaleString()}</p>
+            <p className="text-gray-500 text-sm">Expires on: {new Date(food.expiredDate).toLocaleString()}</p><br /><p className="text-gray-600 text-sm md:text-lg mb-3">Added by</p>
+            <div className='flex flex-col items-start md:flex-row justify-between'>
+            <div className='flex items-center gap-1'>
+            <img className='w-7 h-7 rounded-full' src={food.donatorImage} alt="" />
+            <p className="text-gray-900 md:text-lg text-sm">{food.donatorEmail}</p>
+            </div>
+            <div>
+            <p className="text-gray-900 hidden md:inline md:text-lg text-sm">{food.donatorName}</p>
+            </div>
+          </div> <br className='hidden md:inline' />
 
             <div className="mt-4 text-center">
               {user ? (

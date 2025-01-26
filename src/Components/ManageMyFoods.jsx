@@ -104,51 +104,48 @@ const ManageMyFoods = () => {
         <p className="text-center text-gray-500 mt-4">No foods available.</p>
       ) : (
         <div className="overflow-x-auto">
-        <table className="table-fixed w-[272px] border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-2 sm:px-6 py-3 text-left text-sm font-semibold text-gray-700 w-1/5">
-                Food Name
-              </th>
-              <th className="px-2 sm:px-6 py-3 text-left text-sm font-semibold text-gray-700 w-1/5">
-                Expired Date
-              </th>
-              <th className="px-2 sm:px-6 py-3 text-left text-sm font-semibold text-gray-700 w-1/5">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {foods.map((food) => (
-              <tr key={food._id} className="border-t hover:bg-gray-50">
-                <td className="px-2 sm:px-6 py-4 text-sm text-gray-800 w-1/5">
-                  {food.foodName}
-                </td>
-                <td className="px-2 sm:px-6 py-4 text-sm text-gray-600 w-1/5">
-                  {new Date(food.expiredDate).toLocaleString()}
-                </td>
-                <td className="px-2 sm:px-6 py-4 text-sm flex flex-wrap space-y-2">
-                  <button
-                    onClick={() => handleEditClick(food)}
-                    className="bg-amber-500 text-white py-1 sm:py-1 px-2 sm:px-1 rounded-lg shadow-md hover:bg-yellow-600 focus:outline-none transition duration-200 mr-2"
-                    aria-label={`Edit food: ${food.foodName}`}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(food._id)}
-                    className="bg-red-500 text-white py-1 sm:py-1 px-2 sm:px-1 rounded-lg shadow-md hover:bg-red-600 focus:outline-none transition duration-200"
-                    aria-label={`Delete food: ${food.foodName}`}
-                  >
-                    Delete
-                  </button>
-                </td>
+          <table className="min-w-full table-auto border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Food Name
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Expired Date
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Action
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      
+            </thead>
+            <tbody>
+              {foods.map((food) => (
+                <tr key={food._id} className="border-t hover:bg-gray-50">
+                  <td className="px-6 py-4 text-sm text-gray-800">{food.foodName}</td>
+                  <td className="px-6 py-4 text-sm text-gray-600">
+                    {new Date(food.expiredDate).toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 text-sm flex flex-wrap">
+                    <button
+                      onClick={() => handleEditClick(food)}
+                      className="bg-yellow-500 mb-2 md:mb-0 text-white py-1 px-3 md:py-2 rounded-full shadow-md hover:bg-yellow-600 focus:outline-none transition duration-200 mr-2"
+                      aria-label={`Edit food: ${food.foodName}`}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(food._id)}
+                      className="bg-red-500 text-white py-1 px-3 md:py-2  rounded-full shadow-md hover:bg-red-600 focus:outline-none transition duration-200"
+                      aria-label={`Delete food: ${food.foodName}`}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {isModalOpen && (

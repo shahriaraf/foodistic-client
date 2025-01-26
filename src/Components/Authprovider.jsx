@@ -34,6 +34,15 @@ const AuthProvider = ({ children }) => {
       });
 
       setUser(user); // Update the user state with the newly created user
+
+      // Generate a JWT token for the newly created user
+      const response = await axios.post(
+        'https://assignment-11-server-jet-one.vercel.app/jwt',
+        { email: user.email }, // Send the email to generate the token
+        { withCredentials: true } // Include cookies if your backend uses them
+      );
+      console.log('JWT token created during sign-up:', response.data);
+
       return user;
     } catch (error) {
       console.error("Error creating user:", error);
@@ -44,20 +53,21 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+
   // Function to sign in a user
   const signInUser = async (email, password) => {
     setLoading(true); // Start loading state
-  
+
     try {
       // Sign in with email and password
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       setUser(user); // Update the user state after successful sign-in
-  
+
       // Create JWT token by sending user email to backend
       const response = await axios.post('https://assignment-11-server-jet-one.vercel.app/jwt', { email: email }, { withCredentials: true });
       console.log('JWT token:', response.data);
-  
+
       return user; // Return user object after successful sign-in
     } catch (error) {
       console.error("Error signing in:", error);
@@ -67,7 +77,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false); // Stop loading state
     }
   };
-  
+
 
   // Function to sign out the user
   const signOutUser = async () => {
@@ -89,6 +99,12 @@ const AuthProvider = ({ children }) => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       setUser(user); // Update user state with Google login details
+      const response = await axios.post(
+        'https://assignment-11-server-jet-one.vercel.app/jwt',
+        { email: user.email }, // Send the email to generate the token
+        { withCredentials: true } // Include cookies if your backend uses them
+      );
+      console.log('JWT token created during sign-up:', response.data);
       return user;
     } catch (error) {
       console.error("Error signing in with Google:", error);
@@ -105,14 +121,14 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser); // Update the user state when the auth state changes
       setLoading(false);    // Set loading to false after checking auth state
     });
-  
+
     return () => unsubscribe(); // Cleanup the listener on unmount
   }, []);
-  
+
   if (loading) {
     return <div>Loading...</div>; // Display a loading indicator while checking auth state
   }
-  
+
   // Context value to expose user state and auth functions
   const userInfo = {
     user,

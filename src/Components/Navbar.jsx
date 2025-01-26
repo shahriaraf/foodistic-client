@@ -50,8 +50,8 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <a className="btn btn-ghost text-2xl">Foodistic</a>
-        </div>
+          <a className="btn btn-ghost font-bold text-amber-800 text-2xl">FoodIstic</a>
+        </div> 
 
         {/* Menu for larger screens */}
         <div className="navbar-center hidden lg:flex">
@@ -103,7 +103,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={handleSignOut}
-                className="bg-red-500 hover:bg-red-700 font-semibold text-white px-3 py-2 rounded-lg"
+                className="bg-transparent border-[2px] border-red-600 hover:bg-red-700 font-semibold text-red-600 px-3 py-1 rounded-2xl"
               >
                 Log out
               </button>
