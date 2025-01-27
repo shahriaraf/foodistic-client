@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { AuthContext } from './Authprovider';
 
 const AddFood = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     foodName: '',
     foodImage: '',
@@ -15,7 +16,6 @@ const AddFood = () => {
     donatorEmail: user.email || '',
     donatorImage: user.photoURL || '', // Optional, in case you want to store the image
   });
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +29,16 @@ const AddFood = () => {
     e.preventDefault();
     try {
       const response = await axios.post('https://assignment-11-server-jet-one.vercel.app/add-food', formData);
-      alert('Food added successfully!');
+
+      // Show success alert
+      Swal.fire({
+        icon: 'success',
+        title: 'Food Added!',
+        text: 'The food has been added successfully.',
+        confirmButtonColor: '#6d165D',
+      });
+
+      // Reset the form
       setFormData({
         foodName: '',
         foodImage: '',
@@ -43,7 +52,14 @@ const AddFood = () => {
       });
     } catch (error) {
       console.error('Error adding food:', error);
-      alert('Failed to add food');
+
+      // Show error alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Failed to add food. Please try again.',
+        confirmButtonColor: '#ECA511',
+      });
     }
   };
 
