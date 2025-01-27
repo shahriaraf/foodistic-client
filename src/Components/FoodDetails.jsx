@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AuthContext } from './Authprovider';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import Spinner from './Spinner';
 
 // Fetch food details function
 const fetchFoodDetails = async (id) => {
@@ -73,7 +74,7 @@ const FoodDetails = () => {
   };
 
   if (isLoading) {
-    return <div className="text-center text-xl">Loading...</div>;
+    return <Spinner></Spinner>;
   }
 
   if (isError) {

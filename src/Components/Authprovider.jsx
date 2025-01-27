@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import axios from "axios";
+import Spinner from "./Spinner";
 
 // Context to provide user state and auth functions
 export const AuthContext = createContext(null);
@@ -126,7 +127,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Display a loading indicator while checking auth state
+    return <Spinner></Spinner> ; // Display a loading indicator while checking auth state
   }
 
   // Context value to expose user state and auth functions
