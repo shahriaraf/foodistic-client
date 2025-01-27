@@ -50,7 +50,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <a className="btn btn-ghost font-bold text-amber-800 text-2xl">FoodIstic</a>
+          <a className="btn btn-ghost font-bold text-amber-800 text-2xl"><i className="fa-sharp fa-solid fa-utensils"></i>Foodistic</a>
         </div> 
 
         {/* Menu for larger screens */}
