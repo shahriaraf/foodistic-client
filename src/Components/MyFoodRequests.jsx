@@ -24,7 +24,7 @@ const MyFoodRequests = () => {
       </h1>
       {
         requests.length === 0 ? (
-          <p className="text-center text-gray-500 mt-4">No food request available    </p>
+          <p className="text-center text-gray-500 mt-4">No food request available</p>
         ) : ( <div className="overflow-x-auto">
           <table className="min-w-full sm:w-[272px] border-collapse border border-gray-300">
             <thead>
