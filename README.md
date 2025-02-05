@@ -94,7 +94,7 @@ npm or yarn
 
 Step 1: Clone the Repository
 
-git clone https://github.com/your-username/foodistic.git
+git clone https://github.com/shahriaraf/foodistic-client.git
 cd foodistic
 
 Step 2: Install Dependencies
