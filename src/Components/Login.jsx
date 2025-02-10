@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"; // Import useForm from React Hook Form
 import { AuthContext } from "./Authprovider";
 
-
 const Login = () => {
   const { signInUser, error, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -37,10 +36,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen pt-10 flex items-center justify-center bg-gradient-to-br from-amber-600 via-amber-300 to-amber-600 text-white">
-      <div className="w-72 md:w-full max-w-md p-8 bg-amber-950 backdrop-blur-md rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-center">Foodistic</h1>
-        <p className="mt-2 text-center text-gray-400">Sign in to explore the world of foods!</p>
+    <div
+      className="min-h-screen pt-10 flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('https://i.ibb.co/wrNS803N/4.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-black opacity-45 z-0"></div>
+      <div className="w-72 md:w-full max-w-md p-8 bg-transparent backdrop-blur-md rounded-lg border-gray-600
+      border-[1px]">
+        <h1 className="text-3xl font-bold text-center text-amber-800"><i className="fa-sharp fa-solid fa-utensils"></i>omeBite</h1>
+        <p className="mt-2 text-center font-semibold text-gray-500">Sign in to explore the world of foods!</p>
 
         {/* Error message */}
         {error && <p className="text-red-500 text-center">{error}</p>}
@@ -49,7 +53,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium">
+            <label htmlFor="email" className="block text-sm text-gray-500 font-medium">
               Email
             </label>
             <input
@@ -63,14 +67,14 @@ const Login = () => {
               type="email"
               id="email"
               placeholder="Enter your email"
-              className="w-full mt-1 p-3 text-black rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-1 p-3 text-gray-500 bg-slate-800 rounded-lg shadow focus:outline-none focus:ring-[1px] focus:ring-gray-500"
             />
             {errors.email && <p className="text-red-500">{errors.email.message}</p>}
           </div>
 
           {/* Password Field */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium">
+            <label htmlFor="password" className="block text-sm text-gray-500 font-medium">
               Password
             </label>
             <input
@@ -84,7 +88,7 @@ const Login = () => {
               type="password"
               id="password"
               placeholder="Enter your password"
-              className="w-full mt-1 p-3 text-black rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-1 p-3 text-gray-500 bg-slate-800 rounded-lg shadow focus:outline-none focus:ring-[1px] focus:ring-gray-500"
             />
             {errors.password && <p className="text-red-500">{errors.password.message}</p>}
           </div>
@@ -92,7 +96,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-amber-400 hover:bg-amber-600 transition-colors py-3 rounded-lg font-semibold text-amber-950 shadow-md"
+            className="w-full bg-amber-950 hover:bg-[#451a036b] py-3 rounded-lg font-semibold text-gray-400 shadow-md"
           >
             Log In
           </button>
@@ -100,9 +104,9 @@ const Login = () => {
 
         {/* Sign-up Link */}
         <div className="mt-4 text-center">
-          <p className="text-gray-400">
+          <p className="text-gray-500">
             Don't have an account?{" "}
-            <Link className="text-amber-400 hover:underline" to="/register">
+            <Link className="text-gray-400 hover:underline" to="/register">
               Sign up
             </Link>
           </p>
@@ -112,7 +116,7 @@ const Login = () => {
         <div className="mt-6 text-center">
           <button
             onClick={handleGoogleSignIn}
-            className="w-full bg-slate-300 hover:bg-slate-500 transition-colors py-3 rounded-lg font-semibold text-black shadow-md"
+            className="w-full bg-slate-700 hover:bg-slate-800 transition-colors py-3 rounded-lg font-semibold text-gray-400 shadow-md"
           >
             Sign in with Google <i className="fa-brands fa-google"></i>
           </button>

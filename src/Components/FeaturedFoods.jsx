@@ -18,31 +18,31 @@ const FeaturedFoods = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Featured Foods</h2>
+    <div className="container bg-black mx-auto p-6">
+      <h2 className="text-3xl font-bold text-center text-gray-500 mb-6">Featured Foods</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featuredFoods.map((food) => (
           <div
             key={food._id}
-            className="bg-amber-50 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            className="bg-gray-900 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <img
               src={food.foodImage}
               alt={food.foodName}
-              className="w-full h-48 object-cover"
+              className="w-full opacity-65 h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-bold text-gray-800">{food.foodName}</h3><br />
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-xl font-bold text-gray-500">{food.foodName}</h3><br />
+              <p className="text-gray-500 text-sm">
                 <strong>Quantity:</strong> {food.foodQuantity}
               </p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-500 text-sm">
                 <strong>Pickup Location:</strong> {food.pickupLocation}
               </p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-500 text-sm">
                 <strong>Expire Date:</strong> {new Date(food.expiredDate).toLocaleString()}
               </p>
-              <p className="text-gray-600 text-sm truncate">
+              <p className="text-gray-500 text-sm truncate">
                 <strong>Notes:</strong> {food.additionalNotes}
               </p>
             </div>

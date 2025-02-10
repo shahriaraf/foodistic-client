@@ -4,22 +4,22 @@ const movies = [
   {
     title: "Welcome to Foodie Delight!",
     subtitle: "Enjoy the best Burger in town.",
-    image: "https://i.ibb.co/7YJ2sVw/images-27.jpg",
+    image: "https://i.ibb.co.com/dJ761Pqg/about1.jpg",
   },
   {
     title: "Savor the Flavor!",
     subtitle: "Authentic Italian Pasta.",
-    image: "https://i.ibb.co/0KWLgj5/610x350-Photo-4-862-How-to-Make-CHICKEN-PASTA-Like-an-Italian-V1.jpg",
+    image: "https://i.ibb.co.com/wrNS803N/4.jpg",
   },
   {
     title: "Deliciously Grilled!",
     subtitle: "The Best Grilled Chicken.",
-    image: "https://i.ibb.co/sCZZZzq/Grilled-Chicken-Recipe-5-1200.jpg",
+    image: "https://i.ibb.co.com/JRr7BDxh/3.jpg",
   },
   {
     title: "Hot & Cheesy!",
     subtitle: "Irresistible Pizza for everyone.",
-    image: "https://i.ibb.co/k5X1Bww/images-28.jpg",
+    image: "https://i.ibb.co.com/C30Tb4C6/1.jpg",
   },
 ];
 
@@ -40,14 +40,14 @@ const Banner = () => {
 
       {/* Slider */}
       <div
-        className="flex transition-transform duration-700 ease-in-out pt-16"
+        className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {movies.map((movie, index) => (
           <div
             key={index}
             className="flex-none w-full relative"
-            style={{ height: "80vh" }} // Base height for banner
+            style={{ height: "100vh" }} // Base height for banner
           >
             {/* Movie Image */}
             <img

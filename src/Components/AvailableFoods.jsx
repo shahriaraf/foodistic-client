@@ -43,8 +43,7 @@ const AvailableFoods = () => {
   }, [searchQuery, foods]); // Recalculate filteredFoods when searchQuery or foods change
 
   return (
-    <div className="container mx-auto mt-16 p-6">
-      <h1 className="text-3xl font-bold text-center mb-10">Available Foods</h1>
+    <div className="container mx-auto p-6 pt-44">
       <div className="flex flex-col gap-10 md:flex-row md:justify-between md:items-center md:mb-4">
         {/* Search Bar */}
         <input
@@ -52,14 +51,14 @@ const AvailableFoods = () => {
           placeholder="Search by food name..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="border border-gray-300 rounded-lg p-2 text-lg w-1/2"
+          className="border border-gray-500 bg-black text-gray-500 rounded-lg p-2 text-lg w-1/2"
         />
 
         {/* Sorting Dropdown */}
         <select
           onChange={(e) => setSortBy(e.target.value)}
           value={sortBy}
-          className="border border-gray-100 bg-amber-100 rounded-lg p-2 text-lg mb-5 md:mb-0"
+          className="border border-gray-500 text-gray-500 bg-black rounded-lg p-2 text-lg mb-5 md:mb-0"
         >
           <option value="expiredDate">Sort by Expiry Date</option>
           <option value="foodName">Sort by Food Name</option>
@@ -68,7 +67,7 @@ const AvailableFoods = () => {
         {/* Layout Toggle Button */}
         <button
           onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
-          className="hidden md:inline bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none"
+          className="hidden md:inline text-gray-500 uppercase font-semibold px-4 py-2 rounded-lg button focus:outline-none"
         >
           Change Layout
         </button>
@@ -83,36 +82,36 @@ const AvailableFoods = () => {
         {filteredFoods.map((food) => (
           <div
             key={food._id}
-            className="bg-amber-50 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out"
+            className="bg-gray-900 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out"
           >
             <img
               src={food.foodImage}
               alt={food.foodName}
-              className="w-full h-64 object-cover rounded-t-lg mb-4"
+              className="w-full opacity-65 h-64 object-cover rounded-t-lg mb-4"
             />
             <h3 className="text-xl font-semibold text-gray-800">{food.foodName}</h3>
-            <p className="text-gray-600 text-lg">{food.pickupLocation}</p>
+            <p className="text-gray-500 text-lg">{food.pickupLocation}</p>
             <p className="text-gray-500 text-sm">Expires on: {new Date(food.expiredDate).toLocaleString()}</p><br /><p className="text-gray-600 text-sm md:text-lg mb-3">Added by</p>
             <div className='flex flex-col items-start md:flex-row justify-between'>
-            <div className='flex items-center gap-1'>
-            <img className='w-7 h-7 rounded-full' src={food.donatorImage} alt="" />
-            <p className="text-gray-900 md:text-lg text-sm">{food.donatorEmail}</p>
+            <div className='flex items-center gap-2'>
+            <img className='w-5 h-5 rounded-full' src={food.donatorImage} alt="" />
+            <p className="text-gray-500 md:text-[16px] hover:underline text-[16px]">{food.donatorEmail}</p>
             </div>
             <div>
-            <p className="text-gray-900 hidden md:inline md:text-lg text-sm">{food.donatorName}</p>
+            <p className="text-gray-900 hidden md:inline md:text-[16px] text-[16px">{food.donatorName}</p>
             </div>
           </div> <br className='hidden md:inline' />
 
             <div className="mt-4 text-center">
               {user ? (
                 <Link to={`/food/${food._id}`}>
-                  <button className="bg-amber-500 text-black py-2 px-4 rounded-md hover:bg-amber-700 hover:text-white focus:outline-none">
+                  <button className="text-gray-500 py-2 px-4 button uppercase font-semibold rounded-md focus:outline-none">
                     View Details
                   </button>
                 </Link>
               ) : (
                 <Link to="/login">
-                  <button className="bg-amber-500 text-black py-2 px-4 rounded-md hover:bg-amber-700 hover:text-white focus:outline-none">
+                  <button className="text-gray-500 py-2 px-4 button uppercase font-semibold rounded-md focus:outline-none">
                     View Details
                   </button>
                 </Link>

@@ -111,13 +111,13 @@ const FoodDetails = () => {
           value={additionalNotes}
           onChange={(e) => setAdditionalNotes(e.target.value)}
           placeholder="Add any additional notes for your request"
-          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+          className="w-full p-3 border border-gray-500 text-gray-500 bg-slate-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 mb-4"
           rows="4"
         />
         <div className="flex justify-center">
           <button
             onClick={handleRequest}
-            className="bg-amber-500 text-black py-2 px-6 rounded-lg shadow-md hover:bg-amber-700 hover:text-white focus:outline-none transition duration-200"
+            className="button text-gray-500 uppercase font-semibold py-2 px-6 rounded-lg shadow-md focus:outline-none transition duration-200"
             disabled={isRequestLoading}
           >
             {isRequestLoading ? 'Requesting...' : 'Request'}

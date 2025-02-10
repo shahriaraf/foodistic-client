@@ -5,6 +5,7 @@ import { useContext, useState, useEffect } from "react";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(307.919);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleSignOut = async () => {
@@ -13,7 +14,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 50);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercentage = (scrollTop / docHeight) * 100;
+      const offset = 307.919 - (scrollPercentage / 100) * 307.919;
+      setScrollProgress(offset);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -22,17 +28,16 @@ const Navbar = () => {
 
   return (
     <div>
+      {/* Navbar */}
       <div
-        className={`navbar fixed top-0 left-0 w-full z-50 ${
-          isScrolled
-            ? "bg-amber-100/60 backdrop-blur-lg shadow-xl"
-            : "bg-amber-100"
-        } transition-all duration-300`}
+        className={`navbar w-full fixed top-0 z-50 transition-all duration-300 ${
+          isScrolled ? "bg-black shadow-md" : "bg-transparent"
+        }`}
       >
         <div className="navbar-start">
-          {/* Drawer toggle button */}
+          {/* Drawer Button */}
           <button
-            className="btn btn-ghost lg:hidden"
+            className="btn text-gray-500 btn-ghost lg:hidden"
             onClick={() => setIsDrawerOpen(true)}
           >
             <svg
@@ -50,150 +55,83 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <a className="btn btn-ghost font-bold text-amber-800 text-2xl"><i className="fa-sharp fa-solid fa-utensils"></i>Foodistic</a>
-        </div> 
+          <h1 className="text-[19px] md:text-3xl lg:pl-8 font-bold text-center text-amber-800">
+            <i className="fa-sharp fa-solid fa-utensils"></i>omeBite
+          </h1>
+        </div>
 
-        {/* Menu for larger screens */}
+        {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/available-foods">Available Foods</Link>
-            </li>
+          <ul className="menu text-lg uppercase text-amber-800 font-semibold menu-horizontal px-1">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/available-foods">Foods</Link></li>
             {user ? (
               <>
-                <li>
-                  <Link to="/add-foods">Add Food</Link>
-                </li>
-                <li>
-                  <Link to="/manage-foods">Manage My Foods</Link>
-                </li>
-                <li>
-                  <Link to="/my-food-requests">My Food Requests</Link>
-                </li>
+                <li><Link to="/add-foods">Add Food</Link></li>
+                <li><Link to="/manage-foods">My Foods</Link></li>
+                <li><Link to="/my-food-requests">Food Requests</Link></li>
               </>
             ) : (
               <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/register">Signup</Link>
-                </li>
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Signup</Link></li>
               </>
             )}
           </ul>
         </div>
 
-        {/* Profile Section */}
-        <div className="navbar-end flex items-center space-x-4">
+        {/* User Profile & Logout */}
+        <div className="navbar-end flex items-center space-x-4 md:mr-8">
           {user && (
             <div className="flex items-center space-x-2">
-              <div className="relative group">
-                <img
-                  className="w-12 h-12 rounded-full"
-                  src={user.photoURL}
-                  alt={user.displayName}
-                />
-                <div className="absolute top-12 right-0 mb-2 hidden group-hover:flex justify-center items-center bg-amber-100 text-black text-sm px-3 py-1 rounded shadow-lg">
+              <div className="relative group mr-1 lg:mr-2">
+                <img className="w-8 h-8 md:w-10 md:h-10 border-[3px] border-amber-800 rounded-full" src={user.photoURL} alt={user.displayName} />
+                <div className="absolute top-12 right-0 mb-2 hidden group-hover:flex justify-center items-center bg-black text-gray-500 font-bold text-sm px-3 py-1 rounded shadow-lg">
                   {user.displayName || "User"}
                 </div>
               </div>
               <button
                 onClick={handleSignOut}
-                className="bg-transparent border-[2px] border-red-600 hover:bg-red-700 font-semibold text-red-600 px-3 py-1 rounded-2xl"
-              >
-                Log out
+                className="bg-transparent text-sm md:text-2xl font-semibold rounded-full text-red-600"
+              ><i class="fa-solid fa-arrow-right-from-bracket"></i>
               </button>
             </div>
           )}
         </div>
       </div>
 
-      {/* Sliding Drawer */}
-      <div
-        className={`fixed inset-0 z-50 flex transition-transform duration-300 ${
-          isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="bg-black text-gray-300 w-64 h-full shadow-lg p-4">
-          <button
-            className="text-gray-300 hover:text-gray-500 mb-4"
-            onClick={() => setIsDrawerOpen(false)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      {/* Mobile Drawer */}
+      {isDrawerOpen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex">
+          <div className="w-52 bg-black h-full shadow-lg p-5 flex flex-col">
+            {/* Close Button */}
+            <button
+              className="self-end text-gray-600 text-xl"
+              onClick={() => setIsDrawerOpen(false)}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <ul className="menu menu-vertical space-y-2">
-            <li>
-              <Link to="/" onClick={() => setIsDrawerOpen(false)}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/available-foods" onClick={() => setIsDrawerOpen(false)}>
-                Available Foods
-              </Link>
-            </li>
-            {user ? (
-              <>
-                <li>
-                  <Link to="/add-foods" onClick={() => setIsDrawerOpen(false)}>
-                    Add Food
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/manage-foods"
-                    onClick={() => setIsDrawerOpen(false)}
-                  >
-                    Manage My Foods
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/my-food-requests"
-                    onClick={() => setIsDrawerOpen(false)}
-                  >
-                    My Food Requests
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login" onClick={() => setIsDrawerOpen(false)}>
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/register" onClick={() => setIsDrawerOpen(false)}>
-                    Signup
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
+              ✖
+            </button>
+
+            {/* Mobile Menu */}
+            <ul className="menu text-sm uppercase text-amber-800 font-semibold space-y-4 mt-5">
+              <li><Link to="/" onClick={() => setIsDrawerOpen(false)}>Home</Link></li>
+              <li><Link to="/available-foods" onClick={() => setIsDrawerOpen(false)}>Foods</Link></li>
+              {user ? (
+                <>
+                  <li><Link to="/add-foods" onClick={() => setIsDrawerOpen(false)}>Add Food</Link></li>
+                  <li><Link to="/manage-foods" onClick={() => setIsDrawerOpen(false)}>My Foods</Link></li>
+                  <li><Link to="/my-food-requests" onClick={() => setIsDrawerOpen(false)}>Food Requests</Link></li>
+                </>
+              ) : (
+                <>
+                  <li><Link to="/login" onClick={() => setIsDrawerOpen(false)}>Login</Link></li>
+                  <li><Link to="/register" onClick={() => setIsDrawerOpen(false)}>Signup</Link></li>
+                </>
+              )}
+            </ul>
+          </div>
         </div>
-        <div
-          className="flex-grow bg-black/50"
-          onClick={() => setIsDrawerOpen(false)}
-        ></div>
-      </div>
+      )}
     </div>
   );
 };
