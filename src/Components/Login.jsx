@@ -36,12 +36,11 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="min-h-screen pt-10 flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('https://i.ibb.co/wrNS803N/4.jpg')" }}
-    >
-      <div className="absolute inset-0 bg-black opacity-45 z-0"></div>
-      <div className="w-72 md:w-full max-w-md p-8 bg-transparent backdrop-blur-md rounded-lg border-gray-600
+    <div className="relative min-h-screen pt-32 pb-6 flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('https://i.ibb.co/wrNS803N/4.jpg')" }}>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-45"></div>
+      <div className="w-72 md:w-full relative max-w-md p-8 bg-transparent backdrop-blur-md rounded-lg border-gray-600
       border-[1px]">
         <h1 className="text-3xl font-bold text-center text-amber-800"><i className="fa-sharp fa-solid fa-utensils"></i>omeBite</h1>
         <p className="mt-2 text-center font-semibold text-gray-500">Sign in to explore the world of foods!</p>

@@ -62,12 +62,12 @@ const Register = () => {
   };
 
   return (
-    <div
-      className="min-h-screen pt-32 pb-6 flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('https://i.ibb.co/wrNS803N/4.jpg')" }}
-    >
-      <div className="absolute -inset-52 bg-black opacity-45 z-0"></div>
-      <div className="w-72 md:w-full max-w-md p-8 bg-transparent backdrop-blur-md rounded-lg border-gray-600 border-[1px] z-10">
+    <div className="relative min-h-screen pt-32 pb-6 flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('https://i.ibb.co/wrNS803N/4.jpg')" }}>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-45"></div>
+
+      <div className="w-72 relative md:w-full max-w-md p-8 bg-transparent backdrop-blur-md rounded-lg border-gray-600 border-[1px] z-10">
         <h1 className="text-3xl font-bold text-center text-amber-800">
           <i className="fa-sharp fa-solid fa-utensils"></i>omeBite
         </h1>

@@ -43,12 +43,11 @@ const AddFood = () => {
   };
 
   return (
-    <div
-      className="min-h-screen pt-36 pb-14 flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('https://i.ibb.co.com/C30Tb4C6/1.jpg')" }}
-    >
-      <div className="absolute -inset-64 bg-black opacity-45 z-0"></div>
-      <div className="w-72 md:w-full max-w-md p-8 bg-transparent backdrop-blur-md rounded-lg border-gray-600 border-[1px]">
+    <div className="relative min-h-screen pt-32 pb-6 flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('https://shtheme.org/demosd/winta/wp-content/uploads/2021/07/4-1.jpg" }}>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black opacity-45 z-0"></div>
+      <div className="w-72 md:w-full relative z-10 max-w-md p-8 bg-transparent backdrop-blur-3xl rounded-lg border-gray-600 border-[1px]">
         <h1 className="text-3xl font-bold text-center text-amber-800">
           Add Food
         </h1>
