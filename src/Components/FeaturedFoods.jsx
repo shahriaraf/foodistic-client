@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Tilt from 'react-parallax-tilt';
 
 const FeaturedFoods = () => {
   const [featuredFoods, setFeaturedFoods] = useState([]);
@@ -7,7 +8,9 @@ const FeaturedFoods = () => {
   useEffect(() => {
     const fetchFeaturedFoods = async () => {
       try {
-        const response = await axios.get('https://assignment-11-server-jet-one.vercel.app/featured-foods', {withCredentials: true});
+        const response = await axios.get('https://assignment-11-server-jet-one.vercel.app/featured-foods', {
+          withCredentials: true,
+        });
         setFeaturedFoods(response.data);
       } catch (error) {
         console.error('Error fetching featured foods:', error);
@@ -22,8 +25,13 @@ const FeaturedFoods = () => {
       <h2 className="text-3xl font-bold text-center text-gray-500 mb-6">Featured Foods</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featuredFoods.map((food) => (
-          <div
+          <Tilt
             key={food._id}
+            glareEnable={true}
+            glareMaxOpacity={0.3}
+            scale={1.05}
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
             className="bg-gray-900 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <img
@@ -32,21 +40,21 @@ const FeaturedFoods = () => {
               className="w-full opacity-65 h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-bold text-gray-500">{food.foodName}</h3><br />
+              <h3 className="text-xl font-bold text-gray-400">{food.foodName}</h3><br />
               <p className="text-gray-500 text-sm">
-                <strong>Quantity:</strong> {food.foodQuantity}
+                <strong className='text-gray-400'>Quantity:</strong> {food.foodQuantity}
               </p>
               <p className="text-gray-500 text-sm">
-                <strong>Pickup Location:</strong> {food.pickupLocation}
+                <strong className='text-gray-400'>Pickup Location:</strong> {food.pickupLocation}
               </p>
               <p className="text-gray-500 text-sm">
-                <strong>Expire Date:</strong> {new Date(food.expiredDate).toLocaleString()}
+                <strong className='text-gray-400'>Expire Date:</strong> {new Date(food.expiredDate).toLocaleString()}
               </p>
               <p className="text-gray-500 text-sm truncate">
-                <strong>Notes:</strong> {food.additionalNotes}
+                <strong className='text-gray-400'>Notes:</strong> {food.additionalNotes}
               </p>
             </div>
-          </div>
+          </Tilt>
         ))}
       </div>
     </div>

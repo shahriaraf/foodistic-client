@@ -82,23 +82,23 @@ const AvailableFoods = () => {
         {filteredFoods.map((food) => (
           <div
             key={food._id}
-            className="bg-gray-900 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out"
+            className="bg-slate-800 p-4 relative rounded-bl-full shadow-md hover:shadow-xl transition duration-300 ease-in-out"
           >
             <img
               src={food.foodImage}
               alt={food.foodName}
-              className="w-full opacity-65 h-64 object-cover rounded-t-lg mb-4"
+              className="w-full opacity-65 h-64 object-cover rounded-bl-full mb-4"
             />
-            <h3 className="text-xl font-semibold text-gray-800">{food.foodName}</h3>
-            <p className="text-gray-500 text-lg">{food.pickupLocation}</p>
+            <h3 className="text-sm md:text-xl absolute bottom-64 left-2 font-semibold text-gray-500">{food.foodName}</h3>
+            <p className="text-gray-500 text-sm">{food.pickupLocation}</p>
             <p className="text-gray-500 text-sm">Expires on: {new Date(food.expiredDate).toLocaleString()}</p><br /><p className="text-gray-600 text-sm md:text-lg mb-3">Added by</p>
             <div className='flex flex-col items-start md:flex-row justify-between'>
             <div className='flex items-center gap-2'>
             <img className='w-5 h-5 rounded-full' src={food.donatorImage} alt="" />
-            <p className="text-gray-500 md:text-[16px] hover:underline text-[16px]">{food.donatorEmail}</p>
+            <p className="text-gray-500 md:text-sm hover:underline text-sm">{food.donatorEmail}</p>
             </div>
             <div>
-            <p className="text-gray-900 hidden md:inline md:text-[16px] text-[16px">{food.donatorName}</p>
+            <p className="text-gray-500 hidden md:inline md:text-sm text-sm">{food.donatorName}</p>
             </div>
           </div> <br className='hidden md:inline' />
 

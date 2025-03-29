@@ -94,7 +94,7 @@ const FoodDetails = () => {
       </div>
 
       <div className="text-center mb-4">
-        <p className="text-lg text-gray-700">{food.pickupLocation}</p>
+        <p className="text-lg text-gray-500">{food.pickupLocation}</p>
         <p className="text-sm text-gray-500">Expires on: {new Date(food.expiredDate).toLocaleString()}</p>
       </div>
 

@@ -46,16 +46,16 @@ const MyFoodRequests = () => {
             <tbody>
               {requests.map((request) => (
                 <tr key={request._id} className="border-t">
-                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-500 truncate">
+                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-400 truncate">
                     {request.foodName}
                   </td>
-                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-500 truncate">
+                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-400 truncate">
                     {request.pickupLocation}
                   </td>
-                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-500 truncate">
+                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-400 truncate">
                     {new Date(request.expiredDate).toLocaleString()}
                   </td>
-                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-500 truncate">
+                  <td className="px-2 sm:px-4 py-2 text-sm sm:text-base text-gray-400 truncate">
                     {new Date(request.requestedAt).toLocaleString()}
                   </td>
                 </tr>

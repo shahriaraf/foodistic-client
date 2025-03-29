@@ -64,7 +64,7 @@ const Banner = () => {
             {/* Movie Details */}
             <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 bg-gradient-to-t from-black/80 to-transparent text-center">
               <h2
-                className="text-3xl sm:text-4xl md:text-6xl font-bold text-white animate-fadeIn"
+                className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-400 animate-fadeIn"
                 style={{
                   animation:
                     currentIndex === index
@@ -75,7 +75,7 @@ const Banner = () => {
                 {movie.title}
               </h2>
               <p
-                className="text-lg sm:text-xl md:text-2xl text-gray-300 mt-4 animate-slideUp"
+                className="text-lg sm:text-xl md:text-2xl text-gray-400 mt-4 animate-slideUp"
                 style={{
                   animation:
                     currentIndex === index
@@ -96,10 +96,10 @@ const Banner = () => {
           <div
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`cursor-pointer w-3 h-3 md:w-4 md:h-4 rounded-full ${
+            className={`cursor-pointer w-2 h-2 md:w-[10px] md:h-[10px]  ${
               index === currentIndex
-                ? "bg-white"
-                : "bg-white/50 hover:bg-white/80"
+                ? "bg-amber-700"
+                : "bg-white/20 hover:bg-white/80"
             }`}
           ></div>
         ))}

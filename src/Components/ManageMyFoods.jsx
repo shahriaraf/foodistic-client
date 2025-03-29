@@ -121,8 +121,8 @@ const ManageMyFoods = () => {
             <tbody>
               {foods.map((food) => (
                 <tr key={food._id} className="border-t">
-                  <td className="px-6 py-4 text-sm text-gray-500">{food.foodName}</td>
-                  <td className="px-6 py-4 text-sm text-gray-500">
+                  <td className="px-6 py-4 text-sm text-gray-400">{food.foodName}</td>
+                  <td className="px-6 py-4 text-sm text-gray-400">
                     {new Date(food.expiredDate).toLocaleString()}
                   </td>
                   <td className="px-6 py-4 text-sm flex flex-wrap">
