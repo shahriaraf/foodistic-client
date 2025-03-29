@@ -62,7 +62,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu text-lg uppercase text-amber-800 font-semibold menu-horizontal px-1">
+          <ul className="menu text-lg uppercase text-gray-400 font-semibold menu-horizontal px-1">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/available-foods">Foods</Link></li>
             {user ? (

@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="mb-4">
               <h1 className="text-3xl font-bold text-start text-amber-800"><i className="fa-sharp fa-solid fa-utensils"></i>omeBite</h1>
             </div>
-            <p className="text-sm w-9/12">"Foodistic, where you can now enjoy food and drink in an exclusive and elegant setting."</p>
+            <p className="text-sm w-9/12">"HomeBite, where you can now enjoy food and drink in an exclusive and elegant setting."</p>
             <div className="flex space-x-4 mt-4 text-lg">
               <a href="https://www.facebook.com/" className="hover:text-blue-500">
                 <i className="fab fa-facebook-f"></i>
@@ -50,13 +50,8 @@ const Footer = () => {
 
       {/* Sub Footer */}
       <div className="border-t border-gray-700 mt-10 pt-5">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-          <p className="text-sm">© 2023 Foodistic. All rights reserved.</p>
-          <p className="text-sm">
-            <a href="https://shtheme.org/demosd/winta/?page_id=41" className="hover:underline">
-              Terms & Conditions
-            </a>
-          </p>
+        <div className="container mx-auto text-center px-6">
+          <p className="text-sm">© 2025 HomeBite. All rights reserved.</p>
         </div>
       </div>
     </footer>
