@@ -32,7 +32,7 @@ const FeaturedFoods = () => {
             scale={1.05}
             tiltMaxAngleX={10}
             tiltMaxAngleY={10}
-            className="bg-gray-900 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            className="bg-gradient-to-br from-gray-900 to-slate-800 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <img
               src={food.foodImage}

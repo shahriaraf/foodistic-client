@@ -20,7 +20,7 @@ const MyFoodRequests = () => {
   return (
     <div className="container mx-auto p-4 sm:p-6 pt-24">
       <h1 className="text-2xl sm:text-3xl font-bold text-center mt-16 text-gray-500 mb-6">
-        My Food Requests
+      Food Requests
       </h1>
       {
         requests.length === 0 ? (

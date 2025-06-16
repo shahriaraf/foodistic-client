@@ -98,7 +98,7 @@ const ManageMyFoods = () => {
 
   return (
     <div className="container mx-auto p-6 pt-24">
-      <h1 className="text-3xl font-bold text-center text-gray-500 mb-6">Manage My Foods</h1>
+      <h1 className="text-3xl font-bold text-center text-gray-500 mb-6">Manage Foods</h1>
 
       {foods.length === 0 ? (
         <p className="text-center text-gray-500 mt-4">No foods available.</p>
@@ -128,14 +128,14 @@ const ManageMyFoods = () => {
                   <td className="px-6 py-4 text-sm flex flex-wrap">
                     <button
                       onClick={() => handleEditClick(food)}
-                      className="mb-2 md:mb-0 text-green-700 py-1 px-3 text-xl mr-2"
+                      className="mb-2 md:mb-0 text-green-700 py-1 px-3 text-xl mr-2 transition-transform transform-gpu hover:scale-125"
                       aria-label={`Edit food: ${food.foodName}`}
                     >
                       <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
                       onClick={() => handleDelete(food._id)}
-                      className=" text-red-700 text-xl py-1 px-3"
+                      className=" text-red-700 text-xl py-1 px-3 hover:scale-125 transition-transform transform-gpu"
                       aria-label={`Delete food: ${food.foodName}`}
                     >
                       <i class="fa-solid fa-trash"></i>

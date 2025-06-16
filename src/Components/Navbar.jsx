@@ -63,18 +63,18 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu text-lg uppercase text-gray-400 font-semibold menu-horizontal px-1">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/available-foods">Foods</Link></li>
+            <li className="hover:text-amber-800"><Link to="/">Home</Link></li>
+            <li className="hover:text-amber-800"><Link to="/available-foods">Foods</Link></li>
             {user ? (
               <>
-                <li><Link to="/add-foods">Add Food</Link></li>
-                <li><Link to="/manage-foods">My Foods</Link></li>
-                <li><Link to="/my-food-requests">Food Requests</Link></li>
+                <li className="hover:text-amber-800"><Link to="/add-foods">Add Food</Link></li>
+                <li className="hover:text-amber-800"><Link to="/manage-foods">My Foods</Link></li>
+                <li className="hover:text-amber-800"><Link to="/my-food-requests">Food Requests</Link></li>
               </>
             ) : (
               <>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Signup</Link></li>
+                <li className="hover:text-amber-800"><Link to="/login">Login</Link></li>
+                <li className="hover:text-amber-800"><Link to="/register">Signup</Link></li>
               </>
             )}
           </ul>

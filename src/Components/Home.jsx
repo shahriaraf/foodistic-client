@@ -2,6 +2,10 @@
 
 import Banner from "./Banner";
 import FeaturedFoods from "./FeaturedFoods";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import Testimonial from "./Testimonial";
+
 
 const Home = () => {
   return (
@@ -48,34 +52,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Testimonial></Testimonial>
 
-      {/* Testimonials Section */}
-      <div className="py-12">
-        <h2 className="text-3xl font-bold text-center text-gray-500 mb-6">What People Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="bg-gray-900 p-6 border-[1px] border-gray-500 rounded-lg shadow-lg">
-            <p className="text-gray-500 italic mb-4">
-              "This platform has been a lifesaver! The food I received was fresh and exactly what I
-              needed."
-            </p>
-            <h3 className="text-sm font-bold text-gray-400">- Sarah M.</h3>
-          </div>
-          <div className="bg-gray-900 p-6 border-[1px] border-gray-500 rounded-lg shadow-lg">
-            <p className="text-gray-500 italic mb-4">
-              "I’m amazed at how easy it is to use. It feels good knowing I’m helping reduce food
-              waste."
-            </p>
-            <h3 className="text-sm font-bold text-gray-400">- John D.</h3>
-          </div>
-          <div className="bg-gray-900 p-6 border-[1px] border-gray-500 rounded-lg shadow-lg">
-            <p className="text-gray-500 italic mb-4">
-              "The food is always fresh, and the process is so simple. Thank you for this
-              initiative!"
-            </p>
-            <h3 className="text-sm font-bold text-gray-400">- Emily R.</h3>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 };

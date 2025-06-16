@@ -30,7 +30,7 @@ const Footer = () => {
           <div>
             <h6 className="text-lg font-semibold text-gray-500 mb-2">Phone & Email</h6>
             <p className="text-sm">+1 203-123-0606</p>
-            <p className="text-sm">foodistic@gmail.com</p>
+            <p className="text-sm">homebite@gmail.com</p>
           </div>
 
           {/* Address Section */}

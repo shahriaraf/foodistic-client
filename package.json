@@ -21,7 +21,8 @@
     "react-hook-form": "^7.54.2",
     "react-parallax-tilt": "^1.7.287",
     "react-router-dom": "^7.1.0",
-    "sweetalert2": "^11.15.10"
+    "sweetalert2": "^11.15.10",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

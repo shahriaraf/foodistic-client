@@ -28,3 +28,17 @@
     transition: transform 0.5s ease;
     transform: scale(0);
 }
+
+
+/* Make Swiper pagination bullets white */
+.swiper-pagination-bullet {
+  background-color: white !important;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+  opacity: 1;
+}
+
+
