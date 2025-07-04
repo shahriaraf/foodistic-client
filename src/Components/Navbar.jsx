@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className="navbar-start">
           {/* Enhanced Drawer Button */}
           <button
-            className="btn btn-ghost lg:hidden text-gray-400 hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300"
+            className="btn btn-ghost lg:hidden text-gray-400 hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300"
             onClick={() => setIsDrawerOpen(true)}
           >
             <svg
@@ -59,11 +59,11 @@ const Navbar = () => {
           </button>
           
           {/* Enhanced Logo */}
-          <Link to="/" className="text-[19px] flex md:text-3xl lg:pl-8 font-bold text-amber-800 hover:text-amber-700 transition-colors duration-300 group">
+          <Link to="/" className="text-[19px] flex md:text-3xl lg:pl-8 font-bold text-amber-500 hover:text-amber-400 transition-colors duration-300 group">
             <i className="fa-sharp fa-solid fa-utensils mr-1 lg:mr-2 lg:mt-0 mt-1 group-hover:rotate-12 transition-transform duration-300"></i>
             <span className="relative">
               omeBite
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></div>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full"></div>
             </span>
           </Link>
         </div>
@@ -74,19 +74,19 @@ const Navbar = () => {
             <li className="relative group">
               <Link 
                 to="/" 
-                className="hover:text-amber-800 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
+                className="hover:text-amber-500 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
               >
                 Home
-                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-3/4"></span>
+                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-3/4"></span>
               </Link>
             </li>
             <li className="relative group">
               <Link 
                 to="/available-foods" 
-                className="hover:text-amber-800 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
+                className="hover:text-amber-500 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
               >
                 Foods
-                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-3/4"></span>
+                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-3/4"></span>
               </Link>
             </li>
             {user ? (
@@ -94,28 +94,28 @@ const Navbar = () => {
                 <li className="relative group">
                   <Link 
                     to="/add-foods" 
-                    className="hover:text-amber-800 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
+                    className="hover:text-amber-500 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
                   >
                     Add Food
-                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-3/4"></span>
+                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-3/4"></span>
                   </Link>
                 </li>
                 <li className="relative group">
                   <Link 
                     to="/manage-foods" 
-                    className="hover:text-amber-800 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
+                    className="hover:text-amber-500 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
                   >
                     My Foods
-                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-3/4"></span>
+                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-3/4"></span>
                   </Link>
                 </li>
                 <li className="relative group">
                   <Link 
                     to="/my-food-requests" 
-                    className="hover:text-amber-800 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
+                    className="hover:text-amber-500 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
                   >
                     Food Requests
-                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-3/4"></span>
+                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-3/4"></span>
                   </Link>
                 </li>
               </>
@@ -124,16 +124,16 @@ const Navbar = () => {
                 <li className="relative group">
                   <Link 
                     to="/login" 
-                    className="hover:text-amber-800 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
+                    className="hover:text-amber-500 duration-300 px-4 py-2 rounded-lg hover:bg-amber-800/10"
                   >
                     Login
-                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-3/4"></span>
+                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-3/4"></span>
                   </Link>
                 </li>
                 <li className="relative group">
                   <Link 
                     to="/register" 
-                    className="bg-amber-800 text-black hover:bg-amber-700 duration-300 px-4 py-2 rounded-lg font-bold hover:scale-105 hover:shadow-lg"
+                    className="bg-amber-500 text-black hover:bg-amber-600 duration-300 px-4 py-2 rounded-lg font-bold hover:scale-105 hover:shadow-lg"
                   >
                     Signup
                   </Link>
@@ -150,13 +150,13 @@ const Navbar = () => {
               <div className="relative group mr-1 lg:mr-2">
                 <div className="relative">
                   <img 
-                    className="w-8 h-8 md:w-10 md:h-10 border-[3px] border-amber-800 rounded-full object-cover transition-all duration-300 hover:border-amber-700 hover:scale-110 hover:shadow-lg" 
+                    className="w-8 h-8 md:w-10 md:h-10 border-[3px] border-amber-500 rounded-full object-cover transition-all duration-300 hover:border-amber-500 hover:scale-110 hover:shadow-lg" 
                     src={user.photoURL} 
                     alt={user.displayName} 
                   />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
                 </div>
-                <div className="absolute top-14 right-0 mb-2 hidden group-hover:flex justify-center items-center bg-black/90 backdrop-blur-sm text-amber-800 font-bold text-sm px-3 py-2 rounded-lg shadow-xl border border-amber-800/20 min-w-max">
+                <div className="absolute top-14 right-0 mb-2 hidden group-hover:flex justify-center items-center bg-black/90 backdrop-blur-sm text-amber-500 font-bold text-sm px-3 py-2 rounded-lg shadow-xl border border-amber-800/20 min-w-max">
                   {user.displayName || "User"}
                   <div className="absolute -top-1 right-4 w-2 h-2 bg-black/90 transform rotate-45 border-t border-l border-amber-800/20"></div>
                 </div>
@@ -179,7 +179,7 @@ const Navbar = () => {
           <div className="w-64 bg-gradient-to-b from-black to-gray-900 h-full shadow-2xl p-6 flex flex-col transform transition-transform duration-300 border-r border-amber-800/20">
             {/* Enhanced Close Button */}
             <button
-              className="self-end text-gray-400 hover:text-amber-800 text-xl p-2 rounded-full hover:bg-amber-800/10 transition-all duration-300 hover:scale-110"
+              className="self-end text-gray-400 hover:text-amber-500 text-xl p-2 rounded-full hover:bg-amber-800/10 transition-all duration-300 hover:scale-110"
               onClick={() => setIsDrawerOpen(false)}
             >
               <i className="fa-solid fa-xmark"></i>
@@ -187,11 +187,11 @@ const Navbar = () => {
 
             {/* Mobile Logo */}
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-amber-800">
+              <h2 className="text-2xl font-bold text-amber-500">
                 <i className="fa-sharp fa-solid fa-utensils mr-2"></i>
                 omeBite
               </h2>
-              <div className="w-16 h-0.5 bg-amber-800 mx-auto mt-2"></div>
+              <div className="w-16 h-0.5 bg-amber-500 mx-auto mt-2"></div>
             </div>
 
             {/* Enhanced Mobile Menu */}
@@ -200,7 +200,7 @@ const Navbar = () => {
                 <Link 
                   to="/" 
                   onClick={() => setIsDrawerOpen(false)}
-                  className="hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
+                  className="hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
                 >
                   <i className="fa-solid fa-house w-5"></i>
                   <span>Home</span>
@@ -210,7 +210,7 @@ const Navbar = () => {
                 <Link 
                   to="/available-foods" 
                   onClick={() => setIsDrawerOpen(false)}
-                  className="hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
+                  className="hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
                 >
                   <i className="fa-solid fa-utensils w-5"></i>
                   <span>Foods</span>
@@ -222,7 +222,7 @@ const Navbar = () => {
                     <Link 
                       to="/add-foods" 
                       onClick={() => setIsDrawerOpen(false)}
-                      className="hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
+                      className="hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
                     >
                       <i className="fa-solid fa-plus w-5"></i>
                       <span>Add Food</span>
@@ -232,7 +232,7 @@ const Navbar = () => {
                     <Link 
                       to="/manage-foods" 
                       onClick={() => setIsDrawerOpen(false)}
-                      className="hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
+                      className="hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
                     >
                       <i className="fa-solid fa-list w-5"></i>
                       <span>My Foods</span>
@@ -242,7 +242,7 @@ const Navbar = () => {
                     <Link 
                       to="/my-food-requests" 
                       onClick={() => setIsDrawerOpen(false)}
-                      className="hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
+                      className="hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
                     >
                       <i className="fa-solid fa-clock w-5"></i>
                       <span>Food Requests</span>
@@ -255,7 +255,7 @@ const Navbar = () => {
                     <Link 
                       to="/login" 
                       onClick={() => setIsDrawerOpen(false)}
-                      className="hover:text-amber-800 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
+                      className="hover:text-amber-500 hover:bg-amber-800/10 transition-all duration-300 px-4 py-3 rounded-lg flex items-center space-x-3"
                     >
                       <i className="fa-solid fa-sign-in-alt w-5"></i>
                       <span>Login</span>
@@ -265,7 +265,7 @@ const Navbar = () => {
                     <Link 
                       to="/register" 
                       onClick={() => setIsDrawerOpen(false)}
-                      className="bg-amber-800 text-black hover:bg-amber-700 transition-all duration-300 px-4 py-3 rounded-lg font-bold flex items-center space-x-3 hover:scale-105"
+                      className="bg-amber-500 text-black hover:bg-amber-400 transition-all duration-300 px-4 py-3 rounded-lg font-bold flex items-center space-x-3 hover:scale-105"
                     >
                       <i className="fa-solid fa-user-plus w-5"></i>
                       <span>Signup</span>
@@ -281,14 +281,14 @@ const Navbar = () => {
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="relative">
                     <img 
-                      className="w-10 h-10 border-2 border-amber-800 rounded-full object-cover" 
+                      className="w-10 h-10 border-2 border-amber-500 rounded-full object-cover" 
                       src={user.photoURL} 
                       alt={user.displayName} 
                     />
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
                   </div>
                   <div>
-                    <p className="text-amber-800 font-semibold text-sm">{user.displayName || "User"}</p>
+                    <p className="text-amber-500 font-semibold text-sm">{user.displayName || "User"}</p>
                     <p className="text-gray-500 text-xs">Online</p>
                   </div>
                 </div>

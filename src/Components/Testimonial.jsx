@@ -1,4 +1,90 @@
-// ✅ No changes needed to import section or logic
+import React, { useState, useEffect } from 'react';
+import { Quote, Star, ChevronLeft, ChevronRight, Users, Heart } from 'lucide-react';
+
+export default function Testimonials() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+
+  const testimonials = [
+    {
+      text: "This platform has been a lifesaver! The food I received was fresh and exactly what I needed.",
+      author: "Sarah M.",
+      role: "Community Member",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      location: "Downtown"
+    },
+    {
+      text: "I'm amazed at how easy it is to use. It feels good knowing I'm helping reduce food waste.",
+      author: "John D.",
+      role: "Environmental Advocate",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      location: "Midtown"
+    },
+    {
+      text: "The food is always fresh, and the process is so simple. Thank you for this initiative!",
+      author: "Emily R.",
+      role: "Student",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      location: "University District"
+    },
+    {
+      text: "Outstanding service! The variety of food available is incredible, and pickup is always convenient.",
+      author: "Michael T.",
+      role: "Working Professional",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      location: "Business District"
+    },
+    {
+      text: "This has transformed how our family approaches food. We're saving money and helping the environment!",
+      author: "Lisa K.",
+      role: "Mother of Three",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      location: "Suburbs"
+    }
+  ];
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (!isAutoplay) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoplay, testimonials.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+    setIsAutoplay(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsAutoplay(false);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    setIsAutoplay(false);
+  };
+
+  const renderStars = (rating) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
+      />
+    ));
+  };
+
+  return (
+   // ✅ No changes needed to import section or logic
 
 // ✅ Inside return — updated only styles below for responsiveness:
 <div className="bg-black py-16 px-4 sm:px-6 lg:px-8">
@@ -134,3 +220,6 @@
     </button>
   </div>
 </div>
+
+  );
+}
