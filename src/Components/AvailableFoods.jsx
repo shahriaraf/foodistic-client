@@ -85,9 +85,9 @@ const AvailableFoods = () => {
       <div className="container mx-auto p-6 pt-32">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-amber-800 mb-4 relative">
+          <h1 className="text-4xl md:text-6xl font-bold text-amber-600 mb-4 relative">
             Available Foods
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-amber-800 rounded-full"></div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-amber-600 rounded-full"></div>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
             Discover fresh food donations from generous community members
@@ -107,7 +107,7 @@ const AvailableFoods = () => {
                 placeholder="Search for delicious food..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-gray-900/50 border border-gray-600 focus:border-amber-800 focus:ring-2 focus:ring-amber-800/20 text-gray-300 placeholder-gray-500 rounded-xl pl-10 pr-4 py-3 text-lg transition-all duration-300 backdrop-blur-sm"
+                className="w-full bg-gray-900/50 border border-gray-600 focus:border-amber-600 focus:ring-2 focus:ring-amber-800/20 text-gray-300 placeholder-gray-500 rounded-xl pl-10 pr-4 py-3 text-lg transition-all duration-300 backdrop-blur-sm"
               />
             </div>
 
@@ -116,7 +116,7 @@ const AvailableFoods = () => {
               <select
                 onChange={(e) => setSortBy(e.target.value)}
                 value={sortBy}
-                className="appearance-none bg-gray-900/50 border border-gray-600 focus:border-amber-800 focus:ring-2 focus:ring-amber-800/20 text-gray-300 rounded-xl px-4 py-3 pr-10 text-lg transition-all duration-300 backdrop-blur-sm cursor-pointer"
+                className="appearance-none bg-gray-900/50 border border-gray-600 focus:border-amber-600 focus:ring-2 focus:ring-amber-800/20 text-gray-300 rounded-xl px-4 py-3 pr-10 text-lg transition-all duration-300 backdrop-blur-sm cursor-pointer"
               >
                 <option value="expiredDate">Sort by Expiry Date</option>
                 <option value="foodName">Sort by Food Name</option>
@@ -129,7 +129,7 @@ const AvailableFoods = () => {
             {/* Layout Toggle Button */}
             <button
               onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
-              className="hidden lg:flex items-center gap-2 text-gray-400 hover:text-amber-800 bg-gray-900/50 hover:bg-amber-800/10 border border-gray-600 hover:border-amber-800 px-6 py-3 rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm"
+              className="hidden lg:flex items-center gap-2 text-gray-400 hover:text-amber-600 bg-gray-900/50 hover:bg-amber-800/10 border border-gray-600 hover:border-amber-600 px-6 py-3 rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm"
             >
               <i className={`fa-solid ${isThreeColumnLayout ? 'fa-grip' : 'fa-list'}`}></i>
               <span>{isThreeColumnLayout ? 'Grid View' : 'List View'}</span>
@@ -139,10 +139,10 @@ const AvailableFoods = () => {
           {/* Results Counter */}
           <div className="mt-4 pt-4 border-t border-gray-700">
             <p className="text-gray-400 text-sm">
-              <span className="text-amber-800 font-semibold">{filteredFoods.length}</span> 
+              <span className="text-amber-600 font-semibold">{filteredFoods.length}</span> 
               {filteredFoods.length === 1 ? ' food item' : ' food items'} available
               {searchQuery && (
-                <span> matching "<span className="text-amber-800">{searchQuery}</span>"</span>
+                <span> matching "<span className="text-amber-600">{searchQuery}</span>"</span>
               )}
             </p>
           </div>
@@ -170,7 +170,7 @@ const AvailableFoods = () => {
             {filteredFoods.map((food) => (
               <div
                 key={food._id}
-                className="group bg-gradient-to-br from-gray-900 to-slate-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-700 hover:border-amber-800/50"
+                className="group bg-slate-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-700 hover:border-amber-800/50"
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -208,12 +208,12 @@ const AvailableFoods = () => {
                 <div className="p-6">
                   <div className="space-y-3 mb-6">
                     <div className="flex items-center gap-2 text-gray-400">
-                      <i className="fa-solid fa-location-dot text-amber-800 w-4"></i>
+                      <i className="fa-solid fa-location-dot text-amber-600 w-4"></i>
                       <span className="text-sm font-medium">{food.pickupLocation}</span>
                     </div>
                     
                     <div className="flex items-center gap-2 text-gray-400">
-                      <i className="fa-solid fa-calendar-days text-amber-800 w-4"></i>
+                      <i className="fa-solid fa-calendar-days text-amber-600 w-4"></i>
                       <span className="text-sm">
                         Expires: <span className="font-medium">
                           {new Date(food.expiredDate).toLocaleDateString()}
@@ -226,7 +226,7 @@ const AvailableFoods = () => {
                   <div className="flex items-center gap-3 mb-6 p-3 bg-gray-800/50 rounded-xl border border-gray-700">
                     <div className="relative">
                       <img
-                        className="w-10 h-10 rounded-full border-2 border-amber-800 object-cover"
+                        className="w-10 h-10 rounded-full border-2 border-amber-600 object-cover"
                         src={food.donatorImage}
                         alt={food.donatorName}
                       />
@@ -240,7 +240,7 @@ const AvailableFoods = () => {
                         {food.donatorEmail}
                       </p>
                     </div>
-                    <div className="text-amber-800">
+                    <div className="text-amber-600">
                       <i className="fa-solid fa-heart text-sm"></i>
                     </div>
                   </div>
@@ -256,7 +256,7 @@ const AvailableFoods = () => {
                       </Link>
                     ) : (
                       <Link to="/login">
-                        <button className="group w-full bg-gradient-to-r from-gray-700 to-gray-600 hover:from-amber-800 hover:to-amber-700 text-gray-300 hover:text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
+                        <button className="group w-full bg-gradient-to-r from-gray-700 to-gray-600 hover:from-amber-700 hover:to-amber-700 text-gray-300 hover:text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
                           <i className="fa-solid fa-sign-in-alt"></i>
                           <span>Login to View</span>
                         </button>

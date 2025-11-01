@@ -81,7 +81,7 @@ const Register = () => {
       >
         {/* Title / Logo */}
         <h1 className="text-4xl font-semibold text-center text-amber-600 mb-4 flex items-center justify-center space-x-2">
-          <i className="fa-sharp fa-solid fa-utensils"></i>
+          <i className="fa-sharp animate-bounce fa-solid fa-utensils"></i>
           <span>omeBite</span>
         </h1>
         <p className="text-center mb-6 text-gray-300 font-semibold">
@@ -169,7 +169,7 @@ const Register = () => {
           {/* Submit Button with animation */}
           <button
             type="submit"
-            className="w-full bg-amber-950 hover:bg-[#451a036b] py-3 rounded-lg font-semibold text-gray-400 shadow-md transform hover:scale-105 transition duration-300"
+            className="w-full bg-amber-600 hover:bg-amber-700 py-3 rounded-lg font-semibold text-gray-800 shadow-md transform hover:scale-105 transition duration-300"
           >
             Sign Up
           </button>
@@ -189,9 +189,9 @@ const Register = () => {
         <div className="mt-6">
           <button
             onClick={handleGoogleSignIn}
-            className="w-full py-3 bg-slate-700 hover:bg-slate-800 transition-colors rounded-lg font-semibold text-gray-400 hover:scale-105 hover:shadow-lg transform transition duration-300"
+            className="w-full py-3 bg-white/90 hover:bg-white/70 rounded-lg font-semibold text-gray-800 hover:scale-105 hover:shadow-lg transform transition duration-300"
           >
-            Sign in with Google <i className="fab fa-google"></i>
+            Sign in with Google <i className="text-amber-600 fab fa-google"></i>
           </button>
         </div>
       </div>

@@ -79,11 +79,11 @@ const Banner = () => {
 
   return (
     <div 
-      className="relative w-full overflow-hidden shadow-2xl min-h-screen"
+      className="relative w-full min-h-screen overflow-hidden shadow-2xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-0 opacity-5 z-10 pointer-events-none">
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_white_1px,_transparent_1px)] bg-[length:50px_50px]"></div>
       </div>
 
@@ -112,19 +112,19 @@ const Banner = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30"></div>
 
-            <div className="absolute top-1/4 left-10 w-20 h-20 bg-white/10 rounded-full backdrop-blur-sm animate-float opacity-60"></div>
-            <div className="absolute top-1/3 right-16 w-12 h-12 bg-white/10 rounded-full backdrop-blur-sm animate-float-delay opacity-40"></div>
-            <div className="absolute bottom-1/4 left-1/4 w-16 h-16 bg-white/10 rounded-full backdrop-blur-sm animate-float-slow opacity-30"></div>
+            <div className="absolute w-20 h-20 rounded-full top-1/4 left-10 bg-white/10 backdrop-blur-sm animate-float opacity-60"></div>
+            <div className="absolute w-12 h-12 rounded-full top-1/3 right-16 bg-white/10 backdrop-blur-sm animate-float-delay opacity-40"></div>
+            <div className="absolute w-16 h-16 rounded-full bottom-1/4 left-1/4 bg-white/10 backdrop-blur-sm animate-float-slow opacity-30"></div>
 
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto z-20">
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center max-w-screen-xl px-4 mx-auto text-center sm:px-6 lg:px-8">
 
-              <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 transition-all duration-1000 ${currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: currentIndex === index ? '0.5s' : '0s', textShadow: '2px 2px 20px rgba(0,0,0,0.8)' }}>{movie.title}</h2>
+              <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-4 transition-all duration-1000 ${currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: currentIndex === index ? '0.5s' : '0s', textShadow: '2px 2px 20px rgba(0,0,0,0.8)' }}>{movie.title}</h2>
 
-              <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 mb-8 transition-all duration-1000 ${currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: currentIndex === index ? '0.7s' : '0s', textShadow: '1px 1px 10px rgba(0,0,0,0.8)' }}>{movie.subtitle}</p>
+              <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-extralight text-gray-200 mb-8 transition-all duration-1000 ${currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: currentIndex === index ? '0.7s' : '0s', textShadow: '1px 1px 10px rgba(0,0,0,0.8)' }}>{movie.subtitle}</p>
 
             
 
-              <button className={`group bg-white text-black text-base sm:text-lg md:text-xl px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-yellow-400 ${currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: currentIndex === index ? '1.1s' : '0s' }}>
+              <button className={`group bg-white text-black text-base sm:text-lg md:text-xl px-6 sm:px-8 py-3 sm:py-4 rounded-full font-extralight shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-yellow-400 ${currentIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: currentIndex === index ? '1.1s' : '0s' }}>
                 <span className="mr-2">Order Now</span>
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">→</span>
               </button>
@@ -134,19 +134,19 @@ const Banner = () => {
       </div>
 
       <div className={`absolute inset-y-0 left-0 flex items-center z-30 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-        <button onClick={goToPrevious} className="ml-4 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110">
+        <button onClick={goToPrevious} className="p-3 ml-4 text-white transition-all duration-300 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:scale-110">
           <ChevronLeft className="w-6 h-6" />
         </button>
       </div>
 
       <div className={`absolute inset-y-0 right-0 flex items-center z-30 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-        <button onClick={goToNext} className="mr-4 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110">
+        <button onClick={goToNext} className="p-3 mr-4 text-white transition-all duration-300 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:scale-110">
           <ChevronRight className="w-6 h-6" />
         </button>
       </div>
 
       <div className={`absolute top-6 right-6 z-30 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-        <button onClick={togglePlayPause} className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110">
+        <button onClick={togglePlayPause} className="p-3 text-white transition-all duration-300 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 hover:scale-110">
           {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
         </button>
       </div>
